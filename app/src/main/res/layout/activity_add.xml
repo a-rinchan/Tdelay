@@ -7,28 +7,43 @@
                                              android:background="#0336ff">
 
 
-    <!--<TextView-->
-    <!--android:text="新規入力"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="29dp" android:id="@+id/titleAdd" android:layout_marginEnd="8dp"-->
-    <!--app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"-->
-    <!--app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="16dp"-->
-    <!--app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="24dp"-->
-    <!--android:layout_marginStart="24dp" app:layout_constraintHorizontal_bias="0.0"/>-->
+    <TextView
+            android:text="新規入力"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/titleAdd" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="24dp" app:layout_constraintHorizontal_bias="0.0"
+            android:textColor="@color/colorWhite" android:textSize="24sp" android:fontFamily="@font/smartphoneui"/>
 
-    <!--<TextView-->
-    <!--android:text="路線"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="20dp" android:id="@+id/textView5" tools:layout_editor_absoluteY="72dp"-->
-    <!--app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="24dp"-->
-    <!--android:layout_marginStart="24dp"/>-->
-    <!--<Spinner-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="19dp" android:id="@+id/trainName"-->
-    <!--app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="24dp"-->
-    <!--android:layout_marginRight="24dp" tools:layout_editor_absoluteY="72dp"-->
-    <!--android:layout_marginLeft="8dp"-->
-    <!--android:layout_marginStart="8dp" app:layout_constraintStart_toEndOf="@+id/textView5"-->
-    <!--app:layout_constraintHorizontal_bias="0.149"/>-->
+    <TextView
+            android:text="路線"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/textView5"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="24dp" app:layout_constraintTop_toBottomOf="@+id/titleAdd"
+            android:layout_marginTop="50dp" android:textColor="@color/colorWhite" android:textSize="24sp"
+            android:fontFamily="@font/smartphoneui"/>
+    <Spinner
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" android:id="@+id/spinner"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="24dp"
+            android:layout_marginStart="32dp" app:layout_constraintStart_toEndOf="@+id/textView5"
+            app:layout_constraintHorizontal_bias="0.149" android:entries="@array/line_list"
+            android:spinnerMode="dialog" android:background="@drawable/white_background"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="88dp" android:paddingLeft="24dp"
+            android:paddingTop="16dp" android:paddingBottom="16dp"/>
+    <Button
+            android:text="保存"
+            android:layout_width="144dp"
+            android:layout_height="wrap_content" android:id="@+id/save"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@drawable/button_save_deleate" android:textColor="@color/colorWhite"
+            android:layout_marginTop="32dp"
+            app:layout_constraintTop_toBottomOf="@+id/spinner" app:layout_constraintVertical_bias="0.0"
+            android:fontFamily="@font/smartphoneui" android:textSize="18sp"/>
 
 </android.support.constraint.ConstraintLayout>

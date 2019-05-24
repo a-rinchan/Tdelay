@@ -1,28 +1,31 @@
 package com.a_rin.tdelay
 
+import android.arch.lifecycle.ViewModel
 import android.content.ContentValues
+import android.content.Context
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.os.Handler
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Adapter
-import android.widget.ArrayAdapter
-import android.widget.ListView
-import android.widget.Toolbar
+import android.widget.*
 import com.a_rin.tdelay.model.Line
+import kotlinx.android.synthetic.main.activity_detail.*
 
 class MainActivity : AppCompatActivity() {
 
     val trainTetsudoRepository = TrainTetsudoRepository()
     lateinit var binding: com.a_rin.tdelay.databinding.ActivityMainBinding
-    lateinit var adapter: ArrayAdapter<Line>
+    lateinit var adapter: ArrayAdapter<String>
+    val handler = Handler()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
          binding = DataBindingUtil.setContentView(this,
             R.layout.activity_main)
         setSupportActionBar(binding.toolbar)
@@ -37,16 +40,36 @@ class MainActivity : AppCompatActivity() {
 
 
         val listView = findViewById<ListView>(R.id.list_iiew)
-        adapter = ArrayAdapter<Line>(this,android.R.layout.simple_expandable_list_item_1)
+        adapter = ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1)
         listView.adapter = adapter
 
         listView.setOnItemClickListener{parent,view, position, id->
             val intent = Intent(this,DetailActivity::class.java)
-            //ここに、ListViewの何個目の要素なのかを渡す処理
+            //DetailActivityに何番目の要素なのか渡したい
+            val name = adapter.getItem(position)
+            intent.putExtra("name",name)
             startActivity(intent)
         }
 
+        trainTetsudoRepository.apiLineFetch()
+
+            .subscribe({
+                handler.post {
+                    Log.d("tushin","complete1")
+                    adapter.clear()
+                    val pref = getSharedPreferences("line_name",Context.MODE_PRIVATE)
+                    val value = pref.getString("trainName","")
+
+                    adapter.addAll(it.filter { it.name.equals(value)}.map { it.name })
+                }
+            }, {
+                Log.w(ContentValues.TAG, "")
+            })
+
+
     }
+
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -67,12 +90,19 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         trainTetsudoRepository.apiLineFetch()
-
             .subscribe({
-                adapter.clear()
-                adapter.addAll(it)
+                handler.post {
+                    Log.d("Train","complete2")
+                    adapter.clear()
+                    val pref = getSharedPreferences("line_name",Context.MODE_PRIVATE)
+                    val value = pref.getString("trainName","")
+                    Log.d("Train",value)
+                    adapter.addAll(it.filter { it.name.equals(value)}.map { it.name })
+                }
             }, {
-                Log.w(ContentValues.TAG, "")
+                Log.w("Train", it)
             })
     }
+
 }
+

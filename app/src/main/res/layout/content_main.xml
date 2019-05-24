@@ -10,18 +10,18 @@
         tools:context=".MainActivity" android:background="#0336ff">
 
 
-    <ImageView
-            android:layout_width="100dp"
-            android:layout_height="50dp" app:srcCompat="@drawable/tdelay" android:id="@+id/titleTdelay"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="24dp"
-            android:layout_marginStart="24dp" android:layout_marginTop="16dp"/>
-    <ListView
-            android:id="@+id/list_iiew"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/titleTdelay" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="24dp" android:layout_marginRight="24dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="24dp"
-            android:layout_marginStart="24dp" android:layout_marginTop="8dp" android:background="#f7f7f7"/>
+    <!--<ImageView-->
+            <!--android:layout_width="100dp"-->
+            <!--android:layout_height="50dp" app:srcCompat="@drawable/tdelay" android:id="@+id/titleTdelay"-->
+            <!--app:layout_constraintTop_toTopOf="parent"-->
+            <!--app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="24dp"-->
+            <!--android:layout_marginStart="24dp" android:layout_marginTop="16dp"/>-->
+    <!--<ListView-->
+            <!--android:id="@+id/list_iiew"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/titleTdelay" app:layout_constraintEnd_toEndOf="parent"-->
+            <!--android:layout_marginEnd="24dp" android:layout_marginRight="24dp"-->
+            <!--app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="24dp"-->
+            <!--android:layout_marginStart="24dp" android:layout_marginTop="8dp" android:background="#f7f7f7"/>-->
 </android.support.constraint.ConstraintLayout>
